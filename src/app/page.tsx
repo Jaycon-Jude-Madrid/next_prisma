@@ -1,16 +1,16 @@
+import HomeMainContainer from "@/components/home/HomeMainContainer";
 import { useGetUserDataServer } from "@/hooks/get-user/useGetUserServer";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
 	const data = await useGetUserDataServer();
 
-	if (!data?.user) {
-		redirect("/auth/signin");
+	if (!data) {
+		redirect("auth/signin");
 	}
-
 	return (
-		<main>
-			<div>{JSON.stringify(data?.user)}</div>
+		<main className="py-10 h-full">
+			<HomeMainContainer />
 		</main>
 	);
 }

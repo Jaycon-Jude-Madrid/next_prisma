@@ -27,12 +27,13 @@ model Todos {
   id          String   @id @default(cuid())
   title       String
   description String?
-  isCompleted String   @map("is_completed")
+  isCompleted Boolean  @default(false) @map("is_completed")
   user        User     @relation(fields: [userId], references: [id])
   userId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  status    String?   @map("status") @default("Todo")
   startDate DateTime? @map("start_date")
   endDate   DateTime? @map("end_date")
   priority  Boolean?  @map("priority")

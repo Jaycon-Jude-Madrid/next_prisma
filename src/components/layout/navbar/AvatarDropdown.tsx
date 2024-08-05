@@ -36,7 +36,7 @@ const AvatarDropdown = () => {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="max-w-3xl overflow-hidden rounded-md border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-950">
 				<DropdownMenuLabel className="px-2 py-2">
-					<p className="text-sm font-semibold"> {user?.email}</p>
+					<p className="text-sm font-semibold"> {user.name}</p>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 

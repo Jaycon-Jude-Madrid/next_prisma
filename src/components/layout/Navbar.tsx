@@ -33,27 +33,6 @@ export default function Navbar() {
 						>
 							Home
 						</Link>
-						<Link
-							href="#"
-							className="font-medium flex items-center text-sm transition-colors hover:underline"
-							prefetch={false}
-						>
-							About
-						</Link>
-						<Link
-							href="#"
-							className="font-medium flex items-center text-sm transition-colors hover:underline"
-							prefetch={false}
-						>
-							Services
-						</Link>
-						<Link
-							href="#"
-							className="font-medium flex items-center text-sm transition-colors hover:underline"
-							prefetch={false}
-						>
-							Contact
-						</Link>
 					</nav>
 					<div className="flex items-center gap-4">
 						{!session ? (

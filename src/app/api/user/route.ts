@@ -1,10 +1,11 @@
-import { useGetUserDataServer } from "@/hooks/get-user/useGetUserServer";
 import db from "@/lib/db";
-import { NextResponse } from "next/server"; // Ensure you have the correct import for NextResponse
+import { NextRequest, NextResponse } from "next/server"; // Ensure you have the correct import for NextResponse
 
-export async function GET(response: NextResponse, context: unknown) {
-	const data = await useGetUserDataServer();
-
+export async function GET(
+	response: NextResponse,
+	request: NextRequest,
+	context: unknown
+) {
 	try {
 		const allUsers = await db.user.findMany();
 		return NextResponse.json({

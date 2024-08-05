@@ -1,10 +1,27 @@
 import { options } from "@/lib/auth";
-import { getServerSession, Session } from "next-auth";
+import { getServerSession, Session as NextAuthSession } from "next-auth";
+
+interface User {
+	id: string;
+	name: string;
+	email: string;
+	emailVerified: Date | null;
+	image: string;
+	createdAt: Date;
+	updatedAt: Date;
+}
+
+interface Session extends NextAuthSession {
+	user: User;
+}
 
 export const useGetUserDataServer = async (): Promise<Session | null> => {
 	try {
-		const user = await getServerSession(options);
-		return user;
+		const session = (await getServerSession(options)) as Session;
+		if (!session || !session.user) {
+			return null;
+		}
+		return session;
 	} catch (error: unknown) {
 		console.error("Error fetching user session:", error);
 		return null;

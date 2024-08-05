@@ -4,7 +4,7 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
-import Navbar from "./components/layout/Navbar";
+import Navbar from "../components/layout/Navbar";
 import "./globals.css";
 const Providers = dynamic(() => import("@/providers/Providers"), {
 	ssr: false,
