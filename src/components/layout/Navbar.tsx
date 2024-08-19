@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -35,13 +34,7 @@ export default function Navbar() {
 						</Link>
 					</nav>
 					<div className="flex items-center gap-4">
-						{!session ? (
-							<Button variant="outline" size="sm" onClick={handleRedirect}>
-								Sign in
-							</Button>
-						) : (
-							<AvatarDropdown />
-						)}
+						{session && <AvatarDropdown />}
 					</div>
 				</div>
 			</div>

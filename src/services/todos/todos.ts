@@ -19,7 +19,10 @@ export const addTodo = async ({ body, user_id }: AddTodoProps) => {
 	}
 };
 
-export const getAllTodos = async ({ user_id, status = "" }: GetTodosProps) => {
+export const getAllTodos = async ({
+	user_id = "",
+	status = "",
+}: GetTodosProps) => {
 	try {
 		const res = await axiosInstance.get(
 			`api/todos/${user_id}?status=${status}`

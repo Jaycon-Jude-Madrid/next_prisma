@@ -10,17 +10,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const AvatarDropdown = () => {
-	const router = useRouter();
 	const { data } = useSession();
 	const { user } = data as { user: { image: string; email: string } };
 
 	const handleSignout = (e: any) => {
 		e.preventDefault();
-		signOut();
-		router.push("/");
+		signOut({
+			callbackUrl: "/",
+		});
 	};
 
 	return (

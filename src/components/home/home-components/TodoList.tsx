@@ -8,39 +8,36 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { useGetUserDataServer } from "@/hooks/get-user/useGetUserServer";
+import { getAllTodos } from "@/services/todos/todos";
 import { Check } from "lucide-react";
 import TodoActions from "./TodoActions";
 
-function TodoList() {
-	const todos = [
-		{
-			id: 1,
-			title: "Flower the Garden",
-			status: "Done",
-			description: "Water the plants and flowers in the garden.",
-		},
-		{
-			id: 2,
-			title: "Clean the House",
-			status: "In Progress",
-			description: "Clean the house and do the dishes.",
-		},
-	];
+async function TodoList() {
+	const session = await useGetUserDataServer();
+	const userId = session?.user?.id ?? "";
+
+	const data = await getAllTodos({
+		user_id: userId,
+		status: "",
+	});
+
 	const statusProgressColor: { [key: string]: string } = {
 		Todo: "bg-blue-200 border-blue-500",
 		"In Progress": "bg-orange-200 border-yellow-500",
 		Done: "bg-green-200 border-green-500",
 	};
+
 	return (
 		<div className="max-h-[80vh] overflow-auto space-y-2 p-2">
-			{todos.length === 0 && (
+			{data?.data.length === 0 && (
 				<div className="text-center">
 					<p className="text-gray-700">
 						Your todo list is empty. Add a new task to get started!
 					</p>
 				</div>
 			)}
-			{todos.map((item) => (
+			{data?.data.map((item) => (
 				<Card key={item.id}>
 					<CardHeader>
 						<div className="flex justify-between w-full items-center">

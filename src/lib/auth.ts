@@ -37,7 +37,7 @@ export const options = {
 	},
 	events: {
 		async signIn({ user, isNewUser }) {
-			console.log({ user }, "signed in");
+			// console.log({ user }, "signed in");
 		},
 	},
 } satisfies AuthOptions;

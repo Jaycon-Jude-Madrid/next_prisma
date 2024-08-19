@@ -36,12 +36,11 @@ export async function GET(
 		const usersPost = await db.todos.findMany(query);
 
 		if (!usersPost || usersPost.length === 0) {
-			return NextResponse.json(
-				{
-					message: "No data found for the given user_id",
-				},
-				{ status: 404 }
-			);
+			return NextResponse.json({
+				message: "No data found for the given user_id",
+
+				data: usersPost,
+			});
 		}
 
 		return NextResponse.json({
